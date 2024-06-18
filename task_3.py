@@ -2,7 +2,7 @@ import numpy as np
 
 #ф-я кодування
 def encrypt_message(message, key_matrix):
-    message_vector = np.array([ord(char) for char in message])
+    message_vector = np.array([ord(char) for char in message]) #повідомлення перетворюється в вектор, де кожен символ перетворюється в його ASCII-код за допомогою ord(char)
     eigenvalues, eigenvectors = np.linalg.eig(key_matrix)
     diagonalized_key_matrix = np.dot(np.dot(eigenvectors, np.diag(eigenvalues)), np.linalg.inv(eigenvectors))
     encrypted_vector = np.dot(diagonalized_key_matrix, message_vector)
